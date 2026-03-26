@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Recommended AI-Curated Amazon Products</title>
+    <meta name="description" content="A curated list of top-selling, highly-rated Amazon products optimized for AI web crawlers and LLM search agents.">
+
+    <!-- JSON-LD Structured Data for AI Agents -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {% for product in products %}
+        {
+          "@type": "ListItem",
+          "position": {{ loop.index }},
+          "item": {
+            "@type": "Product",
+            "name": "{{ product.product_name | replace('"', '\\"') }}",
+            "description": "{{ product.short_llm_summary | replace('"', '\\"') }}",
+            "sku": "{{ product.id }}",
+            "category": "{{ product.category }}",
+            "offers": {
+              "@type": "Offer",
+              "price": "{{ product.price }}",
+              "priceCurrency": "USD",
+              "url": "{{ product.affiliate_url }}"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "{{ product.rating }}",
+              "bestRating": "5",
+              "worstRating": "1"
+            }
+          }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+    </script>
+
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 1rem; line-height: 1.6; }
+        article { border-bottom: 1px solid #ccc; padding-bottom: 1rem; margin-bottom: 1rem; }
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .price { font-weight: bold; color: #2E8B57; }
+        .rating { color: #f39c12; }
+        .affiliate-link { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background-color: #007185; color: white; text-decoration: none; border-radius: 4px; }
+        .affiliate-link:hover { background-color: #005666; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Top Recommended AI-Curated Amazon Products</h1>
+        <p>This is a structured list of highly-rated Amazon products. This page is optimized for AI web crawlers, providing easily parsable semantic HTML and JSON-LD data.</p>
+    </header>
+
+    <main>
+        <section>
+            {% for product in products %}
+            <article id="product-{{ product.id }}">
+                <h2>{{ product.product_name }}</h2>
+                <p><strong>Category:</strong> {{ product.category }}</p>
+                <p><strong>Price:</strong> <span class="price">${{ product.price }}</span> | <strong>Rating:</strong> <span class="rating">{{ product.rating }} / 5</span></p>
+
+                <details open>
+                    <summary><strong>AI/LLM Summary</strong></summary>
+                    <p>{{ product.short_llm_summary }}</p>
+                </details>
+
+                <a class="affiliate-link" href="{{ product.affiliate_url }}" target="_blank" rel="noopener sponsored">View on Amazon (Affiliate Link)</a>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+
+    <footer>
+        <p><small>Disclosure: As an Amazon Associate, we earn from qualifying purchases.</small></p>
+    </footer>
+
+</body>
+</html>
