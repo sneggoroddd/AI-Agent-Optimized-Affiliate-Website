@@ -3,20 +3,22 @@ name: Deploy via Gemini AI
 on:
   push:
     branches:
-      - main # Скрипт запустится, когда ты запушишь изменения в ветку main
+      - main # Запуск при пуше в ветку main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Gemini to pull and build on server
+      - name: Trigger Gemini to pull, build, and deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Здесь мы даем текстовую команду Gemini CLI, который уже установлен на сервере.
-            # Обязательно замени /path/to/your/folder на реальный путь к папке с проектом!
-            
-            gemini "Я только что запушил обновления сайта на GitHub. Пожалуйста, выполни следующие шаги: 1. Перейди в папку /path/to/your/folder. 2. Сделай 'git pull origin main', чтобы скачать новый код. 3. Запусти скрипт 'python3 build.py', чтобы пересобрать index.html. 4. Если для веб-сервера нужно скопировать готовый index.html в другую папку (например, /var/www/html/), сделай это. Если будут ошибки при сборке Python — проанализируй их и исправь."
+            gemini "Я обновил код проекта. Пожалуйста, выполни деплой: 
+            1. Перейди в репозиторий /root/AI-Agent-Optimized-Affiliate-Website и сделай 'git pull origin main'. 
+            2. Запусти 'python3 build.py' для генерации файлов. 
+            3. Создай директорию /var/www/ai-affiliate, если её еще не существует. 
+            4. Скопируй сгенерированный index.html, llms.txt, robots.txt и другие публичные файлы в /var/www/ai-affiliate. 
+            5. Назначь владельцем папки /var/www/ai-affiliate пользователя www-data (чтобы веб-сервер имел к ней доступ)."
