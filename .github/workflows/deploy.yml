@@ -20,8 +20,9 @@ jobs:
             echo "1. Переход в папку проекта..."
             cd /root/AI-Agent-Optimized-Affiliate-Website || exit
             
-            echo "2. Загрузка обновлений..."
-            git pull origin main
+            echo "2. Жесткое обновление кода из GitHub..."
+            git fetch origin
+            git reset --hard origin/main
             
             echo "3. Сборка проекта..."
             python3 build.py
