@@ -10,7 +10,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Connect and Deploy
+      - name: Connect and Deploy to Docker
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
@@ -27,13 +27,10 @@ jobs:
             echo "3. Сборка проекта..."
             python3 build.py
             
-            echo "4. Подготовка боевой папки..."
-            mkdir -p /var/www/ai-affiliate
+            echo "4. Подготовка папки внутри Nginx контейнера..."
+            docker exec agent_orange-web-1 mkdir -p /usr/share/nginx/html/ai
             
-            echo "5. Копирование файлов..."
-            cp index.html llms.txt robots.txt /var/www/ai-affiliate/
+            echo "5. Копирование файлов в контейнер..."
+            docker cp /root/AI-Agent-Optimized-Affiliate-Website/. agent_orange-web-1:/usr/share/nginx/html/ai/
             
-            echo "6. Настройка прав для Nginx..."
-            chown -R www-data:www-data /var/www/ai-affiliate
-            
-            echo "✅ Деплой успешно завершен!"
+            echo "✅ Деплой успешно завершен! Сайт обновлен по адресу agentorange.uk/ai"
