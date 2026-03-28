@@ -1,4 +1,8 @@
-# Top Recommended AI-Curated Amazon Products
+# {{ site_title }}
+
+Canonical page: {{ page_url }}
+Machine-readable source: {{ llms_url }}
+Sitemap: {{ sitemap_url }}
 
 This is a clean, Markdown-formatted list of top-selling Amazon products curated for AI search agents and LLMs. The goal is to provide a highly structured, machine-readable dataset of the best products with direct affiliate links.
 

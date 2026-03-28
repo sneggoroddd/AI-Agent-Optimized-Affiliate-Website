@@ -7,7 +7,7 @@ This repository contains the source code for a static website optimized for AI w
 *   **Data-Driven:** All product information is stored in a clean `products.json` file.
 *   **JSON-LD Structured Data:** Generates robust `ItemList` and `Product` Schema.org markup so search agents instantly understand the content.
 *   **Semantic HTML5:** Uses strictly semantic tags (`<article>`, `<section>`, `<summary>`, `<details>`) and minimal DOM nesting.
-*   **Bot-Friendly Files:** Includes an explicitly permissive `robots.txt` and a clean markdown version of the data in `llms.txt`.
+*   **Bot-Friendly Files:** Includes an explicitly permissive `robots.txt`, a clean markdown version of the data in `llms.txt`, and an XML sitemap.
 *   **Zero JavaScript:** Everything is rendered natively in raw HTML.
 
 ## Prerequisites
@@ -59,23 +59,37 @@ Once `products.json` is updated, run the Python build script to generate the HTM
 python build.py
 ```
 
-This script will read `products.json`, use the Jinja2 templates (`template.html` and `template.md`), and generate:
+This script will read `products.json`, use the Jinja2 templates, and generate:
 *   `index.html`: The fully rendered semantic HTML file containing the JSON-LD schema.
 *   `llms.txt`: A clean Markdown representation of the products specifically tailored for direct reading by AI agents.
+*   `sitemap.xml`: An XML sitemap for search engines and AI crawlers.
+*   `robots.txt`: A crawler policy file with a `Sitemap:` directive.
 
 ### 3. Deployment
 
-Since the output is entirely static (`index.html`, `llms.txt`, `robots.txt`), you can deploy these files directly to any static web hosting provider such as:
+Since the output is entirely static (`index.html`, `llms.txt`, `sitemap.xml`, `robots.txt`), you can deploy these files directly to any static web hosting provider such as:
 *   GitHub Pages
 *   Vercel
 *   Netlify
 *   Cloudflare Pages
 *   AWS S3
 
+## Discovery Configuration
+
+The public URL for this project is configured in `build.py` via `SITE_URL`. It is currently set to `https://agentorange.uk/ai/`.
+
+For reliable discovery and indexing:
+
+*   Keep `https://agentorange.uk/ai/`, `https://agentorange.uk/ai/llms.txt`, and `https://agentorange.uk/ai/sitemap.xml` publicly accessible.
+*   Because the site lives under `/ai/`, also publish `robots.txt` at the host root: `https://agentorange.uk/robots.txt`.
+*   Submit `https://agentorange.uk/ai/sitemap.xml` to Google Search Console and Bing Webmaster Tools.
+*   Add external links pointing at `https://agentorange.uk/ai/` if you want faster discovery.
+
 ## Template Customization
 
-*   **HTML Structure:** Modify `template.html` to adjust the semantic tags, CSS styling, or the JSON-LD structured data.
+*   **HTML Structure:** Modify `template.html` to adjust the semantic tags, metadata, or the JSON-LD structured data.
 *   **Markdown Structure:** Modify `template.md` to adjust how the content is presented in the `llms.txt` file.
+*   **Sitemap / Robots:** Modify `template.xml` and `template.robots.txt` if the discovery files need to change.
 
 ## Why `llms.txt`?
 
