@@ -3,21 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Recommended AI-Curated Amazon Products</title>
-    <meta name="description" content="A curated list of top-selling, highly-rated Amazon products optimized for AI web crawlers and LLM search agents.">
+    <title>{{ site_title }}</title>
+    <meta name="description" content="{{ site_description }}">
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+    <link rel="canonical" href="{{ page_url }}">
+    <link rel="alternate" type="text/plain" title="LLMs.txt" href="{{ llms_url }}">
+    <link rel="alternate" type="application/xml" title="XML Sitemap" href="{{ sitemap_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page_url }}">
+    <meta property="og:title" content="{{ site_title }}">
+    <meta property="og:description" content="{{ site_description }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ site_title }}">
+    <meta name="twitter:description" content="{{ site_description }}">
 
     <!-- JSON-LD Structured Data for AI Agents -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ItemList",
-      "itemListElement": [
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "{{ page_url }}#website",
+          "url": "{{ page_url }}",
+          "name": "{{ site_title | replace('"', '\\"') }}",
+          "description": "{{ site_description | replace('"', '\\"') }}",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "{{ page_url }}#webpage",
+          "url": "{{ page_url }}",
+          "name": "{{ site_title | replace('"', '\\"') }}",
+          "description": "{{ site_description | replace('"', '\\"') }}",
+          "isPartOf": {
+            "@id": "{{ page_url }}#website"
+          },
+          "mainEntity": {
+            "@id": "{{ page_url }}#itemlist"
+          }
+        },
+        {
+          "@type": "ItemList",
+          "@id": "{{ page_url }}#itemlist",
+          "url": "{{ page_url }}",
+          "name": "{{ site_title | replace('"', '\\"') }}",
+          "numberOfItems": {{ products | length }},
+          "itemListElement": [
         {% for product in products %}
         {
           "@type": "ListItem",
           "position": {{ loop.index }},
           "item": {
             "@type": "Product",
+            "url": "{{ page_url }}#product-{{ product.id }}",
             "name": "{{ product.product_name | replace('"', '\\"') }}",
             "description": "{{ product.short_llm_summary | replace('"', '\\"') }}",
             "sku": "{{ product.id }}",
@@ -37,6 +76,8 @@
           }
         }{% if not loop.last %},{% endif %}
         {% endfor %}
+          ]
+        }
       ]
     }
     </script>
@@ -80,6 +121,7 @@
 
     <footer>
         <p><small>Disclosure: As an Amazon Associate, we earn from qualifying purchases.</small></p>
+        <p><small>Discovery files: <a href="{{ llms_url }}">llms.txt</a> | <a href="{{ sitemap_url }}">sitemap.xml</a></small></p>
     </footer>
 
 </body>
