@@ -1,20 +1,38 @@
-name: Deploy via Gemini AI
+name: Deploy Website
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch: # Это та самая настройка, которая добавит кнопку "Run workflow"
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Gemini to pull, build, and deploy
+      - name: Connect and Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            gemini "Я обновил код проекта. Пожалуйста, выполни деплой: 1. Перейди в репозиторий /root/AI-Agent-Optimized-Affiliate-Website и сделай 'git pull origin main'. 2. Запусти 'python3 build.py' для генерации файлов. 3. Создай директорию /var/www/ai-affiliate, если её еще не существует. 4. Скопируй сгенерированный index.html, llms.txt, robots.txt и другие публичные файлы в /var/www/ai-affiliate. 5. Назначь владельцем папки /var/www/ai-affiliate пользователя www-data."
+            echo "1. Переход в папку проекта..."
+            cd /root/AI-Agent-Optimized-Affiliate-Website || exit
+            
+            echo "2. Загрузка обновлений..."
+            git pull origin main
+            
+            echo "3. Сборка проекта..."
+            python3 build.py
+            
+            echo "4. Подготовка боевой папки..."
+            mkdir -p /var/www/ai-affiliate
+            
+            echo "5. Копирование файлов..."
+            cp index.html llms.txt robots.txt /var/www/ai-affiliate/
+            
+            echo "6. Настройка прав для Nginx..."
+            chown -R www-data:www-data /var/www/ai-affiliate
+            
+            echo "✅ Деплой успешно завершен!"
