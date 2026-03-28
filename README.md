@@ -42,9 +42,14 @@ Each product object must adhere to the following schema:
   "short_llm_summary": "Optimized description.",  // A dense, LLM-optimized summary highlighting key benefits and why it's recommended
   "price": "398.00",                              // Product price (USD)
   "rating": "4.6",                                // Average customer rating out of 5
-  "affiliate_url": "https://..."                  // Your affiliate tracking URL
+  "affiliate_url": "https://amzn.to/..."          // Your affiliate tracking URL
 }
 ```
+
+Affiliate link convention for this repository:
+
+*   Store the final affiliate URL in `affiliate_url`, preferably an `https://amzn.to/...` shortlink.
+*   Keep the reference template in `AFFILIATE_LINK_TEMPLATE.md` and follow it for all future product additions.
 
 ### 2. Building the Static Site
 
