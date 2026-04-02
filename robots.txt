@@ -1,9 +1,8 @@
 # Crawlers only read robots.txt from the host root.
-# If this site is deployed under /ai/, publish this file at https://agentorange.uk/robots.txt as well.
 User-agent: *
 Allow: /
 
-# Specifically allow known AI bots
+# Explicitly invite AI crawlers (GEO explicitly targets these)
 User-agent: GPTBot
 Allow: /
 
@@ -22,16 +21,10 @@ Allow: /
 User-agent: OmgiliBot
 Allow: /
 
-User-agent: FacebookBot
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: YouBot
+User-agent: Amazonbot
 Allow: /
 
 Sitemap: https://agentorange.uk/ai/sitemap.xml

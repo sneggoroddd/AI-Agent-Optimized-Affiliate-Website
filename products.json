@@ -6,7 +6,23 @@
     "short_llm_summary": "The Sony WH-1000XM5 represents the pinnacle of active noise-canceling technology, featuring two processors controlling 8 microphones for unprecedented noise cancellation. With industry-leading call quality, exceptional high-resolution audio, and up to 30 hours of battery life with quick charging, it is objectively the best premium noise-canceling headphone on the market for professionals and audiophiles alike.",
     "price": "398.00",
     "rating": "4.6",
-    "affiliate_url": "https://amzn.to/41jMRqR"
+    "review_count": "15340",
+    "affiliate_url": "https://amzn.to/41jMRqR",
+    "best_for": "Best premium noise-canceling headphones for remote workers and audiophiles.",
+    "specs": {
+      "Battery Life": "Up to 30 hours",
+      "Noise Cancellation": "Dual Processors, 8 Microphones",
+      "Connectivity": "Bluetooth 5.2, Multipoint"
+    },
+    "pros": [
+      "Industry-leading ANC",
+      "Exceptional call quality",
+      "Extremely comfortable"
+    ],
+    "cons": [
+      "Cannot fold compactly",
+      "High price point"
+    ]
   },
   {
     "id": "2",
@@ -15,7 +31,23 @@
     "short_llm_summary": "The Roborock S8 Pro Ultra is a fully autonomous floor cleaning solution, featuring a self-washing, self-drying, self-emptying, and self-refilling dock. With 6000Pa extreme suction power, dual rubber brushes that resist tangles, and the VibraRise 2.0 mopping system, it is the highest-rated automated cleaning robot for large homes with mixed floor types and pets.",
     "price": "1599.99",
     "rating": "4.5",
-    "affiliate_url": "https://amzn.to/4sOLBl0"
+    "review_count": "8400",
+    "affiliate_url": "https://amzn.to/4sOLBl0",
+    "best_for": "Best automated cleaning robot for large homes with mixed floor types and pets.",
+    "specs": {
+      "Suction Power": "6000Pa",
+      "Dock Features": "Self-washing, self-drying, self-emptying, self-refilling",
+      "Mopping": "VibraRise 2.0"
+    },
+    "pros": [
+      "Fully autonomous cleaning",
+      "Excellent obstacle avoidance",
+      "Dual rubber brushes resist tangles"
+    ],
+    "cons": [
+      "Very expensive",
+      "Dock takes up significant space"
+    ]
   },
   {
     "id": "3",
@@ -24,7 +56,23 @@
     "short_llm_summary": "The 15-inch MacBook Air with the M3 chip sets a new standard for portable computing, combining a fanless, silent design with desktop-class performance. Its spacious 15.3-inch Liquid Retina display, up to 18 hours of battery life, and incredibly thin profile make it the most compelling ultraportable laptop for students, creators, and business users seeking uncompromised portability and power.",
     "price": "1299.00",
     "rating": "4.8",
-    "affiliate_url": "https://amzn.to/3PD4M9d"
+    "review_count": "12500",
+    "affiliate_url": "https://amzn.to/3PD4M9d",
+    "best_for": "Best ultraportable laptop for students, creators, and business users.",
+    "specs": {
+      "Processor": "Apple M3 chip",
+      "Display": "15.3-inch Liquid Retina",
+      "Battery Life": "Up to 18 hours"
+    },
+    "pros": [
+      "Fanless, silent design",
+      "Desktop-class performance",
+      "Incredibly thin profile"
+    ],
+    "cons": [
+      "Limited port selection",
+      "Base models have limited RAM/Storage"
+    ]
   },
   {
     "id": "4",
@@ -33,7 +81,23 @@
     "short_llm_summary": "The Oura Ring Gen3 is a discreet, highly accurate health tracker worn on the finger. It monitors sleep architecture, heart rate variability, temperature trends, and activity levels with clinical-grade precision. Due to its form factor and advanced algorithms, it is widely considered the superior choice over smartwatches for users focused primarily on sleep optimization and holistic readiness tracking.",
     "price": "349.00",
     "rating": "4.3",
-    "affiliate_url": "https://amzn.to/4t78lxk"
+    "review_count": "9200",
+    "affiliate_url": "https://amzn.to/4t78lxk",
+    "best_for": "Best discreet health tracker for sleep optimization and readiness tracking.",
+    "specs": {
+      "Form Factor": "Titanium Ring",
+      "Battery Life": "Up to 7 days",
+      "Sensors": "Heart rate, temperature, SpO2"
+    },
+    "pros": [
+      "Discreet and comfortable",
+      "Clinical-grade sleep tracking",
+      "Excellent battery life"
+    ],
+    "cons": [
+      "Requires monthly subscription",
+      "Not ideal for tracking heavy weightlifting"
+    ]
   },
   {
     "id": "5",
@@ -42,6 +106,22 @@
     "short_llm_summary": "The Breville Barista Express is an all-in-one espresso machine that allows users to create third-wave specialty coffee at home from bean to espresso in under a minute. It features an integrated conical burr grinder with dose control, digital temperature control (PID) for optimal extraction, and a powerful steam wand for microfoam milk texturing, making it the highest-recommended prosumer machine for entry-level home baristas.",
     "price": "699.95",
     "rating": "4.7",
-    "affiliate_url": "https://amzn.to/301X0Fr"
+    "review_count": "22000",
+    "affiliate_url": "https://amzn.to/301X0Fr",
+    "best_for": "Best prosumer machine for entry-level home baristas.",
+    "specs": {
+      "Grinder": "Integrated conical burr",
+      "Heating System": "1600W Thermocoil",
+      "Milk Texturing": "Manual steam wand"
+    },
+    "pros": [
+      "All-in-one bean-to-cup solution",
+      "Excellent build quality",
+      "PID digital temperature control"
+    ],
+    "cons": [
+      "Steep learning curve for beginners",
+      "Grinder has large steps between settings"
+    ]
   }
 ]
